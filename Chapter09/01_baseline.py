@@ -88,7 +88,7 @@ if __name__ == "__main__":
             trainer.state.episode, trainer.state.iteration))
         trainer.should_terminate = True
 
-    logdir = f"runs/{datetime.now().isoformat(timespec='minutes')}-{params.run_name}-{NAME}"
+    logdir = f"runs/{datetime.now().strftime('%Y%m%d-%H%M%S')}-{params.run_name}-{NAME}"
     tb = tb_logger.TensorboardLogger(log_dir=logdir)
     RunningAverage(output_transform=lambda v: v['loss']).attach(engine, "avg_loss")
 
